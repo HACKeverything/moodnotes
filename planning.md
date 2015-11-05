@@ -1,5 +1,7 @@
-# MoodTrackr
-### for when one word isn't enough
+# MoodNotes
+# MoodTracks
+
+### for when words aren't enough
 
 ## Posts
 - RESTful routes
@@ -61,6 +63,7 @@
 - has many posts
 - has many comments
 - has many likes
+- has many followers, through relationships table
 
 ### Create/New 
 - form with username, password, password confirmation
@@ -71,6 +74,7 @@
 - posts where post.user_id = params ID
 - link to posts liked
 - link to posts commented on
+- button to follow user if params ID is not the same as current user ID
 
 
 
@@ -106,6 +110,22 @@
 - must be logged in
 - shows all likes for a user
 - /users/:id/likes
+
+
+
+
+## ???? Relationships ?????? Maybe? 
+
+- has many through
+- Table columns:
+	* follower id
+	* followed id
+
+- button on a user's show page
+- user id would be ID of show page
+- follower id would be id of current user
+
+
 
 
 ## Header (only show header if logged in)
