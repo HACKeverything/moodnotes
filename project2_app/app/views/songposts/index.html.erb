@@ -1,0 +1,11 @@
+<% @songposts.each do |post|%>
+	<div>
+		<%= @users.find_by(id: post.user_id).username %><br>
+		<%= post.user_id %><br>
+		<%= post.song_title %><br>
+		<%= post.artist %><br>
+		<%= post.description %><br>
+		<iframe src="https://embed.spotify.com/?uri=<%= post.spotify_url %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+		
+	</div>
+<% end %>
