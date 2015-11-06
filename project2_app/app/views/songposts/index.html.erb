@@ -1,11 +1,14 @@
-<% @songposts.each do |post|%>
-	<div>
-		<%= @users.find_by(id: post.user_id).username %><br>
-		<%= post.user_id %><br>
-		<%= post.song_title %><br>
-		<%= post.artist %><br>
-		<%= post.description %><br>
-		<iframe src="https://embed.spotify.com/?uri=<%= post.spotify_url %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-		
-	</div>
-<% end %>
+<%= link_to 'Create a new post!', new_songpost_path %><br><br>
+<div id="post-index-container"></div>
+	<% @songposts.each do |post|%>
+		<div class="post-index-box">
+			<%= @users.find_by(id: post.user_id).username %><br>
+			<%= link_to 'View', user_path(post.user_id)%><br>
+			<%= post.song_title %> by <%= post.artist %><br>
+			
+			<iframe src="https://embed.spotify.com/?uri=<%= post.spotify_url %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+			<br>
+			<%= link_to 'Post details', songpost_path(post.id) %>
+		</div>
+	<% end %>
+</div>

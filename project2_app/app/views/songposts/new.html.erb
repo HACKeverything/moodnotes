@@ -1,0 +1,7 @@
+<h2>Create a new post!</h2>
+<h3>How are you feeling? Search for a song.</h3>
+<%= form_tag songs_path, method: "get" do %>
+ <%= text_field_tag(:song_name, "", placeholder: "Enter song name") %>
+
+ <%= submit_tag "Search"%>
+<% end %>

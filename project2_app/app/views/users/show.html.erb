@@ -1,0 +1,10 @@
+<h2><%= @user.username %></h2>
+<%= @user.username %>'s posts:
+
+<% @posts.each do |post| %>
+	<div>
+		<%= post.song_title %>
+		<%= post.artist %>
+		<iframe src="https://embed.spotify.com/?uri=<%= post.spotify_url %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+	</div>
+<% end %>

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     resources :followeds
   end
 
-  resources :songposts do
-  end
+  resources :songposts
 
+  resources :songs, only: [:show, :index]
 
   root "songposts#index"
 end
@@ -77,3 +77,8 @@ end
 #                          PATCH  /songposts/:id(.:format)                     songposts#update
 #                          PUT    /songposts/:id(.:format)                     songposts#update
 #                          DELETE /songposts/:id(.:format)                     songposts#destroy
+
+#                    songs GET    /songs(.:format)                            songs#index
+#                     song GET    /songs/:id(.:format)                        songs#show
+
+#                     root GET    /                                            songposts#index

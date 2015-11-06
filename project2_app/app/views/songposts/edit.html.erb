@@ -1,0 +1,5 @@
+<h2>Edit post!</h2>
+<%= form_for @songpost do |f| %>
+	<textarea rows="3" cols="40" type="text" name="songpost[description]"><%=@songpost.description %></textarea><br>
+	<input type="submit" value="Update!">
+<% end %>

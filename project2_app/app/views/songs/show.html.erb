@@ -1,0 +1,12 @@
+<h2>Create a post!</h2>
+<h3><%= @song.name %> by <%= @song.artists.first.name %></h3>
+<div>
+	<form action="/songposts" method="post">
+		<input type="hidden" name="songpost[song_title]" value="<%=@song.name%>">
+		<input type="hidden" name="songpost[artist]" value="<%=@song.artists.first.name%>">
+		<input type="hidden" name="songpost[spotify_url]" value="<%=@song.uri%>">
+		<textarea rows="3" cols="40" type="text" name="songpost[description]" placeholder="Add a short description!"></textarea><br>
+		<input type="submit" value="Post!">
+	</form>
+</div>
+<iframe src="https://embed.spotify.com/?uri=<%= @song.uri %>" width="280" height="354.667" frameborder="0" allowtransparency="true"></iframe>
