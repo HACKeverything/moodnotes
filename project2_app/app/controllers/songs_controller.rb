@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-
+	before_action :authenticate_user!
 	def index
    if !params[:song_name].empty?
    	 @songs = RSpotify::Track.search(params[:song_name])

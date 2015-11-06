@@ -1,4 +1,5 @@
 class SongpostsController < ApplicationController
+	before_action :authenticate_user!, except: :index
 	before_action :set_songpost, only: [:show, :edit, :update, :destroy]
 	skip_before_action :verify_authenticity_token, only: [:create, :new]
 	require 'rspotify'
@@ -22,6 +23,9 @@ class SongpostsController < ApplicationController
 
 	def show
 		@users = User.all
+		@likes = @songpost.likes
+		@comments = @songpost.comments
+		@current_user_id = current_user.id
 	end
 
 	def edit

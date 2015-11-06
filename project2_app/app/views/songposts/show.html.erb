@@ -3,31 +3,31 @@
 <%= @songpost.description %><br>
 
 <div>
-	<% if @songpost.likes %>
-		<%= @songpost.likes.length %>
-		<% if @songpost.likes.length == 1 %>
+	<% if @likes %>
+		<%= @likes.length %>
+		<% if @likes.length == 1 %>
 			like
+		<% elsif @likes.length == 0 %>
+			likes :( 
 		<% else %>
 			likes
 		<% end %>
-	<% else %>
-		0 likes :( 
 	<% end %>
 </div>
 
 <div>
-	<% if @songpost.comments %>
-		<%= @songpost.comments.length %>
-		<% if @songpost.comments.length == 1 %>
+	<% if @comments %>
+		<%= @comments.length %>
+		<% if @comments.length == 1 %>
 			comment:<br>
+		<% elsif @comments.length == 0 %>
+			comments :( 
 		<% else %>
 			comments:<br>
 		<% end %>
-		<% @songpost.comments.each do |comment|%>
+		<% @comments.each do |comment|%>
 			<%= comment.content %> - <%= @users.find_by(id: comment.user_id).username %>
 		<% end %>
-	<% else %>
-		0 comments :( 
 	<% end %>
 </div>
 
@@ -35,11 +35,20 @@
 <iframe src="https://embed.spotify.com/?uri=<%= @songpost.spotify_url %>" width="500" height="633.33" frameborder="0" allowtransparency="true"></iframe><br>
 
 
-<form action="/users/<%= current_user.id %>/likes" method="post">
-	<input type="hidden" name="like[user_id]" value="<%=current_user.id%>">
-	<input type="hidden" name="like[songpost_id]" value="<%=@songpost.id%>">
-	<button>Like</button>
-</form>
+<% if !@likes.find_by(user_id: current_user.id) %>
+	<form action="/users/<%= @current_user_id %>/likes" method="post">
+		<input type="hidden" name="like[user_id]" value="<%=@current_user_id%>">
+		<input type="hidden" name="like[songpost_id]" value="<%=@songpost.id%>">
+		<button>Like</button>
+	</form>
+<% else %>
+	<form action="/users/<%= @current_user_id %>/likes/<%= @likes.find_by(user_id: @current_user_id).id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="hidden" name="songpost_id" value="<%= @songpost.id%>">
+		<input type="hidden" name="id" value="<%= @likes.find_by(user_id: @current_user_id).id %>">
+		<button>Unlike</button>
+	</form>
+<% end %>
 
 
 <form action="/users/<%= current_user.id %>/comments" method="post">
