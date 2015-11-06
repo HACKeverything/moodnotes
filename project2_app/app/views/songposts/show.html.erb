@@ -1,68 +1,85 @@
-<h2>Post by <%= @users.find_by(id: @songpost.user_id).username %></h2>
-<h3><%= @songpost.song_title %> by <%= @songpost.artist %></h3><br>
-<%= @songpost.description %><br>
+<div id="post-container">
+	<div id="post-info">
+		<h2><%= @users.find_by(id: @songpost.user_id).username %></h2>
+		<h3><%= @songpost.song_title %> by <%= @songpost.artist %></h3>
+	</div>
+	
+	<iframe src="https://embed.spotify.com/?uri=<%= @songpost.spotify_url %>" width="500" height="633.33" frameborder="0" allowtransparency="true"></iframe><br>
 
-<div>
-	<% if @likes %>
-		<%= @likes.length %>
-		<% if @likes.length == 1 %>
-			like
-		<% elsif @likes.length == 0 %>
-			likes :( 
+<div id="like-comment-container">
+	<%= @songpost.description %><br><br>
+	<div id="like-comment-button">
+		<% if !@likes.find_by(user_id: current_user.id) %>
+			<form class="form" action="/users/<%= @current_user_id %>/likes" method="post">
+				<input type="hidden" name="like[user_id]" value="<%=@current_user_id%>">
+				<input type="hidden" name="like[songpost_id]" value="<%=@songpost.id%>">
+				<button class="button">LIKE</button>
+			</form>
 		<% else %>
-			likes
+			<form class="form" action="/users/<%= @current_user_id %>/likes/<%= @likes.find_by(user_id: @current_user_id).id %>" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input type="hidden" name="songpost_id" value="<%= @songpost.id%>">
+				<input type="hidden" name="id" value="<%= @likes.find_by(user_id: @current_user_id).id %>">
+				<button class="button">UNLIKE</button>
+			</form>
 		<% end %>
-	<% end %>
+
+		<form class="form" action="/users/<%= current_user.id %>/comments" method="post">
+			<input type="hidden" name="comment[user_id]" value="<%=current_user.id%>">
+			<input type="hidden" name="comment[songpost_id]" value="<%=@songpost.id%>">
+			<div class="row">
+				<div class="large-6 small-4 small-centered columns">
+					<textarea name="comment[content]" placeholder="Leave a comment here!"></textarea>
+				</div>
+			</div>
+			<button class="button">COMMENT</button>
+		</form>
+	</div>
+
+
+
+	<div id="like-comment">
+		<div>
+			<% if @likes %>
+			<%= @likes.length %>
+			<% end %>
+
+			<% if @likes.length == 1 %>
+				like
+			<% elsif @likes.length == 0 %>
+				likes :( 
+			<% else %>
+				likes
+			<% end %>
+		
+		</div>
+
+		<div>
+			<% if @comments %>
+				<%= @comments.length %>
+			<% end %>
+
+			<% if @comments.length == 1 %>
+				comment:<br>
+			<% elsif @comments.length == 0 %>
+				comments :( 
+			<% else %>
+				comments:<br>
+			<% end %>
+
+			<% @comments.each do |comment|%>
+				<%= comment.content %> - <%= @users.find_by(id: comment.user_id).username %>
+			<% end %>
+		</div>
+	</div>
+
+</div>
 </div>
 
+
 <div>
-	<% if @comments %>
-		<%= @comments.length %>
-		<% if @comments.length == 1 %>
-			comment:<br>
-		<% elsif @comments.length == 0 %>
-			comments :( 
-		<% else %>
-			comments:<br>
-		<% end %>
-		<% @comments.each do |comment|%>
-			<%= comment.content %> - <%= @users.find_by(id: comment.user_id).username %>
-		<% end %>
-	<% end %>
-</div>
-
-<br><br>
-<iframe src="https://embed.spotify.com/?uri=<%= @songpost.spotify_url %>" width="500" height="633.33" frameborder="0" allowtransparency="true"></iframe><br>
-
-
-<% if !@likes.find_by(user_id: current_user.id) %>
-	<form action="/users/<%= @current_user_id %>/likes" method="post">
-		<input type="hidden" name="like[user_id]" value="<%=@current_user_id%>">
-		<input type="hidden" name="like[songpost_id]" value="<%=@songpost.id%>">
-		<button>Like</button>
-	</form>
-<% else %>
-	<form action="/users/<%= @current_user_id %>/likes/<%= @likes.find_by(user_id: @current_user_id).id %>" method="post">
-		<input type="hidden" name="_method" value="delete">
-		<input type="hidden" name="songpost_id" value="<%= @songpost.id%>">
-		<input type="hidden" name="id" value="<%= @likes.find_by(user_id: @current_user_id).id %>">
-		<button>Unlike</button>
-	</form>
-<% end %>
-
-
-<form action="/users/<%= current_user.id %>/comments" method="post">
-	<input type="hidden" name="comment[user_id]" value="<%=current_user.id%>">
-	<input type="hidden" name="comment[songpost_id]" value="<%=@songpost.id%>">
-	<textarea rows="3" cols="40" type="text" name="comment[content]" placeholder="Leave a comment here!"></textarea>
-	<button>Comment</button>
-</form>
-
-
-
-<br>
-
 <% if @songpost.user_id == current_user.id %>
-	<%= link_to 'Edit', edit_songpost_path(@songpost.id) %> 
-	<%= link_to 'Delete', @songpost, :method => 'delete' %>
-<% end %>
+		<%= link_to 'Edit', edit_songpost_path(@songpost.id) %> 
+		<%= link_to 'Delete', @songpost, :method => 'delete' %>
+	<% end %>
+</div>

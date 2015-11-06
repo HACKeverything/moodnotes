@@ -12,66 +12,91 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation
+ *= require normalize
+ *= require font-awesome
  */
-body {
-	font-family: 'Montserrat', sans-serif;
-	background-image: url(http://www.webdesignburn.com/wp-content/uploads/2015/04/Grey-Texture-Background-and-Wallpaper-27.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	color: white;
-	text-align: center;
-}
 
-.header-logo {
-	font-size: 60px;
-	text-decoration: none;
-	font-weight: 800;
+
+
+
+.grid-frame {
+	padding-left: 30px;
+	padding-right: 30px;
+	margin: 0 auto;
 }
 
 a {
 	color: white;
 }
 
-.song-index-box {
+li {
+	text-align: center;
+}
+
+li a {
+	color: white;
+	font-weight: 800;
+}
+
+li a:hover {
+	color: dodgerblue;
+}
+
+.header-logo {
+	font-size: 60px;
+	margin: 0 auto;
+	text-align: center;
+	color: transparent;
+	background: linear-gradient(45deg, hotpink, dodgerblue);
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+	font-weight: 700;
+	display: block;
+}
+
+.button {
+  color: white;
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  border: 4px solid white;
+  background: linear-gradient(45deg, pink, skyblue);
+  transition: all 1s ease; 
+  border-radius: 5px;
+}
+
+
+.button:hover {
+  background: linear-gradient(45deg, #e5acb6, #79b9d3); 
+}
+
+#post-container {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.form {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#post-info {
+	text-align: left;
+	max-width: 500px;
+	margin: 0 auto;
 	display: inline-block;
-	width: 18%;
-	height: 100px;
-	background-color: rgba(255,255,255,0.4);
-	border-radius: 10px;
-	vertical-align: bottom;
-	padding-top: 20px;
-	margin: 10px;
 }
 
-#index-container {
-	max-width: 90%;
-	text-align: center;
-	margin: 0 auto;
+.post-index-div {
+	max-width: 99.5%;
+	height: auto;
+	background: linear-gradient(rgba(255,192,203,0.4), rgba(135,206,235,0.4));
+	border-radius: 20px;
 }
 
-table {
-	margin: 0 auto;
-	text-align: center;
-}
-
-#post-index-container {
-	max-width: 95%;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.post-index-box {
+i {
 	display: inline-block;
-	width: 30%;
-	height: 200px;
-	background-color: rgba(255,255,255,0.4);
-	border-radius: 10px;
-	vertical-align: bottom;
-	padding-top: 20px;
-	margin: 10px;
-}
-
-.post-index-box iframe {
-	margin-top: 20px;
 }
