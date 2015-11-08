@@ -1,12 +1,18 @@
 <h2>Create a post!</h2>
-<h3>Select a song below.</h3>
+<h4>Select a song below.</h4>
 <div id="index-container">
-	<% @songs.each do |song| %>
-		<div class="song-index-box">
-			<div>
-					<%= song.name %> by <%= song.artists.first.name %><br>
-					<%= link_to 'View', song_path(song.id) %>
-			</div>
-		</div>
-	 <% end %>
- </div>
+	<div class="row">
+		<div class="small-12 large-12">
+			<% @songs.each do |song| %>
+				<div class="song-index-box">
+					<div>
+						
+						<%= link_to song_path(song.id) do %>
+							<%= song.name %> by <%= song.artists.first.name %> 
+						<% end %>
+					</div>
+				</div>
+		 	<% end %>
+	 	</div>
+	</div>
+</div>

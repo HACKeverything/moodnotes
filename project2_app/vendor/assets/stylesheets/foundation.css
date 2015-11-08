@@ -55,7 +55,7 @@ body {
   font-size: 100%; }
 
 body {
-  background-image: url(http://www.webdesignburn.com/wp-content/uploads/2015/04/Grey-Texture-Background-and-Wallpaper-27.jpg);
+  background-image: url("background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

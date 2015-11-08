@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
-  
+  root "songposts#index"
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :users, only: [:show] do
     resources :likes
     resources :comments
-    resources :followers
-    resources :followeds
   end
 
   resources :songposts
 
   resources :songs, only: [:show, :index]
 
-  root "songposts#index"
 end
 
 #                   Prefix Verb   URI Pattern                                  Controller#Action
@@ -50,23 +47,6 @@ end
 #                          PATCH  /users/:user_id/comments/:id(.:format)       comments#update
 #                          PUT    /users/:user_id/comments/:id(.:format)       comments#update
 #                          DELETE /users/:user_id/comments/:id(.:format)       comments#destroy
-
-#           user_followers GET    /users/:user_id/followers(.:format)          followers#index
-#                          POST   /users/:user_id/followers(.:format)          followers#create
-#        new_user_follower GET    /users/:user_id/followers/new(.:format)      followers#new
-#       edit_user_follower GET    /users/:user_id/followers/:id/edit(.:format) followers#edit
-#            user_follower GET    /users/:user_id/followers/:id(.:format)      followers#show
-#                          PATCH  /users/:user_id/followers/:id(.:format)      followers#update
-#                          PUT    /users/:user_id/followers/:id(.:format)      followers#update
-#                          DELETE /users/:user_id/followers/:id(.:format)      followers#destroy
-#           user_followeds GET    /users/:user_id/followeds(.:format)          followeds#index
-#                          POST   /users/:user_id/followeds(.:format)          followeds#create
-#        new_user_followed GET    /users/:user_id/followeds/new(.:format)      followeds#new
-#       edit_user_followed GET    /users/:user_id/followeds/:id/edit(.:format) followeds#edit
-#            user_followed GET    /users/:user_id/followeds/:id(.:format)      followeds#show
-#                          PATCH  /users/:user_id/followeds/:id(.:format)      followeds#update
-#                          PUT    /users/:user_id/followeds/:id(.:format)      followeds#update
-#                          DELETE /users/:user_id/followeds/:id(.:format)      followeds#destroy
 
 #                     user GET    /users/:id(.:format)                         users#show
 #                songposts GET    /songposts(.:format)                         songposts#index

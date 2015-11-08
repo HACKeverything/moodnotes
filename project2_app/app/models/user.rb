@@ -5,15 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :songposts, dependent: :destroy
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  # destroying a user also destroys the user's relationships
-
-  has_many :followeds, through: :active_relationships
-  # followeds = following
-
-
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
-  has_many :followers, through: :passive_relationships
-
+ 
 end

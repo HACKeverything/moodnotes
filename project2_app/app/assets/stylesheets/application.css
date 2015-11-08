@@ -43,16 +43,30 @@ li a:hover {
 	color: dodgerblue;
 }
 
-.header-logo {
+#header-logo {
+	width: 400px;
+	display: block;
 	font-size: 60px;
-	margin: 0 auto;
-	text-align: center;
+	text-decoration: none;
 	color: transparent;
 	background: linear-gradient(45deg, hotpink, dodgerblue);
 	-webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 	font-weight: 700;
-	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
+	
+#header-logo div {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#header-logo div a {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .button {
@@ -63,6 +77,8 @@ li a:hover {
   background: linear-gradient(45deg, pink, skyblue);
   transition: all 1s ease; 
   border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 
@@ -99,4 +115,203 @@ li a:hover {
 
 i {
 	display: inline-block;
+}
+
+.button a {
+	color: white;
+}
+
+.button a:hover {
+	color: white;
+}
+
+#post-button {
+	margin: 0 auto 40px auto;
+}
+
+#post-button-container {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#like-comment-button form {
+	display: inline-block;
+	margin-top: -10px;
+}
+
+#like-comment div{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+#like-comment i{
+	color: white;
+}
+
+#songpost-description {
+	margin-top: -10px;
+	text-align: left;
+	display: inline-block;
+}
+
+.username {
+	display: inline-block;
+	text-align: left;
+	color: hotpink;
+}
+
+.post-info-box {
+	padding: 0px 10px;
+}
+
+.post-info {
+	margin: 0 auto;
+}
+
+.timestamp {
+	padding: 0px 0px 0px 20px;
+}
+
+.timestamp h3 {
+	color: hotpink;
+}
+
+.show-post {
+	background: linear-gradient(rgba(255,192,203,0.4), rgba(135,206,235,0.4));
+	border-radius: 20px;
+}
+
+#likes-comments {
+	padding-left: 20px;
+}
+
+.post-info-container {
+
+}
+
+.like {
+	color: transparent;
+	background: linear-gradient(45deg, pink, skyblue);
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  transition: all 1s ease; 
+  padding-left: 5px;
+  padding-right: 5px;
+
+  display: inline-block;
+}
+
+
+.like:hover {
+  background: linear-gradient(45deg, #e5acb6, #79b9d3);
+  color: transparent;
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  cursor: pointer;
+}
+
+
+.unlike {
+	color: transparent;
+	background: linear-gradient(45deg, pink, skyblue);
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  transition: all 1s ease; 
+  padding-left: 5px;
+  padding-right: 5px;
+
+  display: inline-block;
+}
+
+
+.unlike:hover {
+  background: linear-gradient(45deg, #e5acb6, #79b9d3);
+  color: transparent;
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  cursor: pointer;
+}
+
+
+.like-button {
+	background-color: transparent;
+	border: none;
+}
+
+.comment {
+	text-align: left;
+	margin: 100px 0px;
+}
+
+.textarea {
+	color: black;
+}
+
+.likes-comments-container h5 {
+	color: white;
+	display: inline-block;
+}
+
+#likes {
+	margin-bottom: 20px;
+	margin-top: 10px;
+	line-height: 1;
+	display: inline-block;
+}
+
+#comments {
+	margin-bottom: 20px;
+	margin-top: 10px;
+	line-height: 1;
+	display: inline-block;
+}
+
+#comment-username {
+	color: hotpink;
+}
+
+#show-comments {
+	margin-top: 0px;
+}
+
+#username-description {
+	margin-top: -50px;
+}
+
+#leave-comment {
+	margin-top: -100px;
+}
+
+#edit-delete {
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
+
+#edit-delete a {
+	color: white;
+	font-weight: 600;
+	margin-right: 10px;
+}
+
+#edit-delete a:hover {
+	color: grey;
+}
+
+.song-index-box a {
+	color: white;
+	font-weight: 800;
+}
+
+.song-index-box a:hover {
+	color: grey;
+}
+
+.user-info {
+	margin-top: -20px;
 }

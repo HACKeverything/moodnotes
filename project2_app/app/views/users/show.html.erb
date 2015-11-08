@@ -1,14 +1,30 @@
-<h2><%= @user.username %></h2>
-<%= @user.username %>'s posts:
+<div id="post-button-container"><div class="button" id="post-button"><%= link_to 'POST!', new_songpost_path%></div></div>
+<div class="user-info">
+	<h2><%= @user.username %></h2>
 
-<div class="grid-frame post-index-container">
+	
+
+	<h4><%= @user.username %>'s posts:</h4>
+</div>
+
+<div class="grid-frame">
 	<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-		<% @songposts.each do |post| %>
-		<li class="user-post-index-box">
-			<%= post.song_title %> by <%= post.artist %><br>
-			<iframe src="https://embed.spotify.com/?uri=<%= post.spotify_url %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe><br>
-			<%= link_to 'Post details', songpost_path(post.id) %>
-		</li>
+		<% @songposts.each do |post|%>
+			<li class="post-index-box">
+				<div class="post-index-div">
+					</br>
+					
+					<iframe src="https://embed.spotify.com/?uri=<%= post.spotify_url %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+					<br>
+
+					<%= link_to songpost_path(post.id) do %>
+						<%= post.song_title %> by <%= post.artist %><br>
+					<% end %><br>
+					
+					
+				</div>
+			</li>
 		<% end %>
 	</ul>
 </div>
+

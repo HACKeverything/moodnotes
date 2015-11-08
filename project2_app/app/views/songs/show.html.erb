@@ -5,7 +5,7 @@
 		<input type="hidden" name="songpost[song_title]" value="<%=@song.name%>">
 		<input type="hidden" name="songpost[artist]" value="<%=@song.artists.first.name%>">
 		<input type="hidden" name="songpost[spotify_url]" value="<%=@song.uri%>">
-		<textarea rows="3" cols="40" type="text" name="songpost[description]" placeholder="Add a short description!"></textarea><br>
+		<textarea class="textarea" rows="3" cols="40" type="text" name="songpost[description]" placeholder="Add a short description!"></textarea><br>
 		<input type="submit" value="Post!">
 	</form>
 </div>
