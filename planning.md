@@ -47,7 +47,7 @@
 - all comments and likes where post ID = params ID
 - link 
 
-### Edit
+### Edit/Update
 - must be logged in as the user of that post
 
 ### Delete
@@ -63,10 +63,14 @@
 - has many posts
 - has many comments
 - has many likes
-- has many followers, through relationships table
+- has many followers through passive_relationships table
+- has many following through active_relationships table
 
 ### Create/New 
 - form with username, password, password confirmation
+
+### Edit/Update 
+- can change password
 
 ### Show (displays all posts for the user)
 - must be logged in
@@ -74,7 +78,9 @@
 - posts where post.user_id = params ID
 - link to posts liked
 - link to posts commented on
-- button to follow user if params ID is not the same as current user ID
+- button to follow user 
+	* unless params ID is the same as current user ID
+	* unless current user is already following params ID
 
 
 
@@ -112,26 +118,10 @@
 - /users/:id/likes
 
 
-
-
-## ???? Relationships ?????? Maybe? 
-
-- has many through
-- Table columns:
-	* follower id
-	* followed id
-
-- button on a user's show page
-- user id would be ID of show page
-- follower id would be id of current user
-
-
-
-
 ## Header (only show header if logged in)
 Links:
 - home page (posts index)
 - my profile
 - log out
-- bonus: change password
+- change password
 

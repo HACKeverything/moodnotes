@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module Project2App
   class Application < Rails::Application
+    config.serve_static_files = true
+    config.cache_classes = true
+    config.serve_static_assets = true
+    config.assets.compile = true
+    config.assets.digest = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -23,4 +28,5 @@ module Project2App
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
+  
 end

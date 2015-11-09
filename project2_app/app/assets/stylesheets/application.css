@@ -18,7 +18,12 @@
  */
 
 
-
+body {
+	background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 .grid-frame {
 	padding-left: 30px;

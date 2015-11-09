@@ -72,8 +72,10 @@
         <%= f.submit "UPDATE", :class => "button" %>
       </div><br>
 
+      <% end %>
+      
       <p>Unhappy?<br> <%= button_to "CANCEL ACCOUNT", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "button" %></p>
-    <% end %>
+    
     
   </div>
 </div>
