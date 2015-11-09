@@ -4,7 +4,7 @@ class SongpostsController < ApplicationController
 	skip_before_action :verify_authenticity_token, only: [:create, :new]
 	require 'rspotify'
 	def index
-		@songposts = Songpost.last(10).reverse
+		@songposts = Songpost.last(15).reverse
 		# most recent 10 posts
 
 		@users = User.all
